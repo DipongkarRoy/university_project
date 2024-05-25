@@ -1,6 +1,10 @@
 import { Schema, model } from 'mongoose';
-import { Guardian, LocalGuardian, Student, UserName } from './student.interface';
-
+import {
+  Guardian,
+  LocalGuardian,
+  TStudent,
+  UserName,
+} from './student.interface';
 
 const userNameSchema = new Schema<UserName>({
   firstName: {
@@ -63,17 +67,17 @@ const localGuradianSchema = new Schema<LocalGuardian>({
 });
 
 const studentSchema = new Schema<Student>({
-  id: { type: String ,unique:true },
-  user:{
-    type:Schema.Types.ObjectId,
-    required:[true ,'id must ne needs'],
-    unique:true,
-    ref:'Tuser'
+  id: { type: String, unique: true },
+  user: {
+    type: Schema.Types.ObjectId,
+    required: [true, 'id must ne needs'],
+    unique: true,
+    ref: 'Tuser',
   },
-  password:{
-    type:String ,
-    required:true
-  },
+  // password:{
+  //   type:String ,
+  //   required:true
+  // },
   name: userNameSchema,
   gender: ['male', 'female'],
   dateOfBirth: { type: String },
@@ -86,7 +90,33 @@ const studentSchema = new Schema<Student>({
   guardian: guardianSchema,
   localGuardian: localGuradianSchema,
   profileImg: { type: String },
-  // isActive: ['active', 'blocked'],
 });
 
-export const StudentModel = model<Student>('Student', studentSchema);
+//virtual
+studentSchema.virtual('fullName').get(function () {
+  return this.name.firstName + this.name.middleName + this.name.lastName;
+});
+
+// Query Middleware
+studentSchema.pre('find', function (next) {
+  this.find({ isDeleted: { $ne: true } });
+  next();
+});
+
+studentSchema.pre('findOne', function (next) {
+  this.find({ isDeleted: { $ne: true } });
+  next();
+});
+
+studentSchema.pre('aggregate', function (next) {
+  this.pipeline().unshift({ $match: { isDeleted: { $ne: true } } });
+  next();
+});
+
+//creating a custom static method
+studentSchema.statics.isUserExists = async function (id: string) {
+  const existingUser = await Student.findOne({ id });
+  return existingUser;
+};
+
+export const Student = model<TStudent, StudentModel>('Student', studentSchema);

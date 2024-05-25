@@ -1,24 +1,23 @@
-import express, { Request, Response} from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 const app = express();
 import cors from 'cors';
-import { StudentRoutes } from './module/student/student.route';
-import { userRoutes } from './module/user/user.routes';
-
+import globalError from './app/midlewireGlobal/globalError';
+import router from './app/router';
 
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/v1/students' ,StudentRoutes)
-app.use('/api/v1/users' ,userRoutes)
+app.use('/api/v1', router);
+app.use('/api/v1', router);
 
-app.get('/', async (req: Request, res: Response) => {
+app.get('/', async (req: Request, res: Response, next: NextFunction) => {
   try {
     res.status(200).json({
       success: true,
       massage: 'backend setup project server running',
     });
   } catch (error) {
-    console.log(error);
+    next(error);
   }
 });
 app.all('*', (req: Request, res: Response) => {
@@ -28,5 +27,6 @@ app.all('*', (req: Request, res: Response) => {
   });
 });
 
+app.use(globalError);
 
- export default app;
+export default app;

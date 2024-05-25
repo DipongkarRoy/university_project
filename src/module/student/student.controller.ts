@@ -1,23 +1,8 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import { StudentServices } from './student.service';
 
 
-// const createStudent = async (req: Request, res: Response) => {
-//   try {
-//     const { student: studentData } = req.body;
-//     const result = await StudentServices.createStudentIntoDB(studentData);
-
-//     res.status(200).json({
-//       success: true,
-//       message: 'Student is created succesfully',
-//       data: result,
-//     });
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
-
-const getAllStudents = async (req: Request, res: Response) => {
+const getAllStudents = async (req: Request, res: Response ,next:NextFunction) => {
   try {
     const result = await StudentServices.getAllStudentsFromDB();
 
@@ -26,12 +11,12 @@ const getAllStudents = async (req: Request, res: Response) => {
       message: 'Students are retrieved succesfully',
       data: result,
     });
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+   next(error)
   }
 };
 
-const getSingleStudent = async (req: Request, res: Response) => {
+const getSingleStudent = async (req: Request, res: Response ,next:NextFunction) => {
   try {
     const { studentsId } = req.params;
 
@@ -42,13 +27,12 @@ const getSingleStudent = async (req: Request, res: Response) => {
       message: 'Student is retrieved succesfully',
       data: result,
     });
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+   next(error)
   }
 };
 
 export const StudentControllers = {
-  //createStudent,
   getAllStudents,
   getSingleStudent,
 };
