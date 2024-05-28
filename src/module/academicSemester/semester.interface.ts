@@ -19,3 +19,14 @@ export type TAcademicSemester = {
   startMonth: TMonth;
   endMonth: TMonth;
 };
+
+
+export type TsemesterNameCodeMapper ={
+  [key:string]:string ;
+};
+
+export const semesterMapper:TsemesterNameCodeMapper= {
+  Autumn :'01',
+  Summer:'02',
+  Fall:'03'
+}
