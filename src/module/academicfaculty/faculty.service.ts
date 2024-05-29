@@ -6,7 +6,24 @@ const CreateFacultyDb =async(payload:TFaculty)=>{
     return result
 }
 
+const getFacultyDb=async()=>{
+    const result = await FacultyModel.find()
+    return result;
+}
+
+const singleFacultyDb =async(id:string)=>{
+    const result = await FacultyModel.findById(id);
+    return result;
+}
+const updateFacultyDb = async(id:string)=>{
+    const result = await FacultyModel.findByIdAndUpdate(id);
+    return result ;
+}
+
 
 export const facuyltyServiceAllDb ={
-    CreateFacultyDb
+    CreateFacultyDb,
+    getFacultyDb,
+    singleFacultyDb,
+    updateFacultyDb
 }
