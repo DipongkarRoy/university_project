@@ -33,7 +33,7 @@ const singleSemesterId = catchAsync(async(req ,res)=>{
 
 const updateSemester = catchAsync(async(req ,res)=>{
   const {semesterId} = req.params;
-  console.log(semesterId);
+  //console.log(semesterId);
 
   const result = await semesterDbAll.updateSemesterDb(semesterId ,req.body)
   res.status(200).json({

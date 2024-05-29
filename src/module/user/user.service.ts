@@ -1,3 +1,4 @@
+
 import config from '../../app/config';
 import { TStudent } from '../student/student.interface';
 
@@ -18,7 +19,7 @@ const createUserIntoDB = async (studentData: TStudent, password: string) => {
   userData.role = 'student';
   //find academic semester :
  
-  const semester = await AcademicSemesterModel.findById(studentData.admissionSemester)
+  const semester:any = await AcademicSemesterModel.findById(studentData.admissionSemester)
   //set manually genaratored it: :4
   userData.id = await generateStudentId(semester);
   //create user: :5
