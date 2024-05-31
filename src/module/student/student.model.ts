@@ -139,7 +139,12 @@ const studentSchema = new Schema<TStudent, StudentModel>(
     admissionSemester:{
       type:Schema.Types.ObjectId ,
       ref: 'AcademicSemester'
-    }
+    },
+    admissionDepartment:{
+      type:Schema.Types.ObjectId ,
+      ref: 'Department'
+    },
+
   },
   {
     toJSON: {
