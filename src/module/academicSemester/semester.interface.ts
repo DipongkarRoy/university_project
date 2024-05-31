@@ -1,3 +1,4 @@
+
 type TMonth =
   | 'January'
   | 'February'
@@ -19,6 +20,8 @@ export type TAcademicSemester = {
   startMonth: TMonth;
   endMonth: TMonth;
 };
+
+
 
 
 export type TsemesterNameCodeMapper ={

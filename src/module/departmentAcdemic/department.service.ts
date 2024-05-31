@@ -2,7 +2,7 @@ import { TDepartment } from "./department.interface";
 import { DepartmentModel } from "./department.model";
 
 const createDepartmentDb = async(payload:TDepartment)=>{
-    const result = await DepartmentModel.create(payload)
+    const result = (await DepartmentModel.create(payload))
     return result ;
 };
 

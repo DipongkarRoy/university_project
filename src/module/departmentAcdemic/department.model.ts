@@ -9,7 +9,7 @@ const DepartmentSchema = new Schema<TDepartment>(
     },
     academicFaculty: {
       type: Schema.Types.ObjectId,
-      ref: 'academicFaculty',
+      ref: 'FacultyModel',
     },
   },
   {
@@ -32,7 +32,7 @@ DepartmentSchema.pre('save', async function (next) {
 DepartmentSchema.pre('findOneAndUpdate',async function (next) {
    const query = this.getQuery()
    const isDepatmentExists = await DepartmentModel.findOne(query);
-   if (isDepatmentExists) {
+   if (!isDepatmentExists) {
       throw new Error('department is allReady exists');
     } else {
       next();
