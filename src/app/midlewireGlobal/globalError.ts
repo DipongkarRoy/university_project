@@ -4,8 +4,8 @@ const globalError =(error: any, req: Request, res: Response, next: NextFunction)
     try {
       return res.status(500).json({
         success: false,
-        massage:'wrong me data' ,
-        error: error,
+        massage:'wrong went data' ,
+        error:error
       });
     } catch (error) {
       next(error);
