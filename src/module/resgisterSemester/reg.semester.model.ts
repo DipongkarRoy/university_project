@@ -25,12 +25,12 @@ const Reg_semesterSchema = new Schema<TReg_semister>(
     minCredit: {
       type: Number,
       required: true,
-      default:3
+      default: 3,
     },
     maxCredit: {
       type: Number,
       required: true,
-      default:16
+      default: 16,
     },
   },
   {

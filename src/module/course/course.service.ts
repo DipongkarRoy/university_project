@@ -1,6 +1,4 @@
-
 import mongoose from 'mongoose';
-
 
 import { Course, CourseFaculty } from './course.model';
 import QueryBuilder from '../../app/builder/queryBuilder';

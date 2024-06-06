@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-const userValidationSchema =z.object({
+const userValidationSchema = z.object({
   body: z.object({
     password: z
       .string({
@@ -8,7 +8,7 @@ const userValidationSchema =z.object({
       })
       .max(20, { message: 'Password is required then 20 characters' })
       .optional(),
-    })
-})
+  }),
+});
 
 export const UserValidation = userValidationSchema;

@@ -1,8 +1,8 @@
 export type Tuser = {
-    id:string ,
-    password :string ,
-    needsPasswordChange :boolean ,
-    role :'admin'|'student'|'faculty',
-    status:'in-progress'|'block',
-    isDeleted :boolean 
-}
+  id: string;
+  password: string;
+  needsPasswordChange: boolean;
+  role: 'admin' | 'student' | 'faculty';
+  status: 'in-progress' | 'block';
+  isDeleted: boolean;
+};

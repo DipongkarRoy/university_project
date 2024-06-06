@@ -10,7 +10,7 @@ const createDepartment = catchAsync(async (req, res) => {
   });
 });
 const getDepartment = catchAsync(async (req, res) => {
-  const result = await departmentAllDb.getDepartmentDb()
+  const result = await departmentAllDb.getDepartmentDb();
   res.status(200).json({
     success: true,
     message: 'academic department  is all data succesfully',

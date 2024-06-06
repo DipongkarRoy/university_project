@@ -25,7 +25,6 @@ export const academicSemesterSchemaValidation = z.object({
   }),
 });
 
-
 const updateAcademicSemesterValidationSchema = z.object({
   body: z.object({
     name: z.enum(['Autumn', 'Summer', 'Fall']).optional(),
@@ -38,5 +37,5 @@ const updateAcademicSemesterValidationSchema = z.object({
 
 export const TAcademicSemesterValidates = {
   academicSemesterSchemaValidation,
-  updateAcademicSemesterValidationSchema
+  updateAcademicSemesterValidationSchema,
 };

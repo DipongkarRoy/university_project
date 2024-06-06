@@ -1,6 +1,9 @@
 import { Schema, model } from 'mongoose';
-import { TCourse, TCoursefaculty, TPreRequisiteCourses } from './couse.interface';
-
+import {
+  TCourse,
+  TCoursefaculty,
+  TPreRequisiteCourses,
+} from './couse.interface';
 
 const preRequisiteCoursesSchema = new Schema<TPreRequisiteCourses>(
   {

@@ -1,4 +1,3 @@
-
 import catchAsync from '../../app/utiles/catchAsyne';
 import { CourseServices } from './course.service';
 
@@ -9,9 +8,8 @@ const createCourse = catchAsync(async (req, res) => {
     success: true,
     message: 'Course is created succesfully',
     data: result,
-  })
-
-})
+  });
+});
 
 const getAllCourses = catchAsync(async (req, res) => {
   const result = await CourseServices.getAllCoursesFromDB(req.query);
@@ -20,19 +18,18 @@ const getAllCourses = catchAsync(async (req, res) => {
     success: true,
     message: 'Course are retrieved successfully',
     data: result,
-  })
-  
+  });
 });
 
 const getSingleCourse = catchAsync(async (req, res) => {
   const { id } = req.params;
   const result = await CourseServices.getSingleCourseFromDB(id);
 
- res.status(200).json({
-  success: true,
+  res.status(200).json({
+    success: true,
     message: 'Course is retrieved succesfully',
     data: result,
- })
+  });
 });
 
 const updateCourse = catchAsync(async (req, res) => {
@@ -42,7 +39,7 @@ const updateCourse = catchAsync(async (req, res) => {
     success: true,
     message: 'course is updated succesfully',
     data: result,
-  })
+  });
 });
 
 const deleteCourse = catchAsync(async (req, res) => {
@@ -53,7 +50,7 @@ const deleteCourse = catchAsync(async (req, res) => {
     success: true,
     message: 'Course is deleted succesfully',
     data: result,
-  })
+  });
 });
 
 const assignFacultiesWithCourse = catchAsync(async (req, res) => {
@@ -65,11 +62,11 @@ const assignFacultiesWithCourse = catchAsync(async (req, res) => {
     faculties,
   );
 
- res.status(200).json({
-  success: true,
+  res.status(200).json({
+    success: true,
     message: 'Faculties assigned  succesfully',
     data: result,
- })
+  });
 });
 
 const removeFacultiesFromCourse = catchAsync(async (req, res) => {
@@ -85,8 +82,8 @@ const removeFacultiesFromCourse = catchAsync(async (req, res) => {
     success: true,
     message: 'Faculties assigned  succesfully',
     data: result,
-  })
-})
+  });
+});
 export const CourseControllers = {
   createCourse,
   getSingleCourse,
@@ -94,6 +91,5 @@ export const CourseControllers = {
   updateCourse,
   deleteCourse,
   assignFacultiesWithCourse,
-  removeFacultiesFromCourse
-}
-
+  removeFacultiesFromCourse,
+};

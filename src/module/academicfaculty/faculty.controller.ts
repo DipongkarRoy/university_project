@@ -10,38 +10,38 @@ const createFaculty = catchAsync(async (req, res) => {
   });
 });
 
-const getFaculty = catchAsync(async(req ,res)=>{
-  const result = await facuyltyServiceAllDb.getFacultyDb()
+const getFaculty = catchAsync(async (req, res) => {
+  const result = await facuyltyServiceAllDb.getFacultyDb();
   res.status(200).json({
     success: true,
     message: 'academic faculty is all data succesfully',
     data: result,
   });
-})
+});
 
-const singleFacultyId = catchAsync(async(req ,res)=>{
-  const {facultyId}=req.params ;
-  const result = await facuyltyServiceAllDb.singleFacultyDb(facultyId)
+const singleFacultyId = catchAsync(async (req, res) => {
+  const { facultyId } = req.params;
+  const result = await facuyltyServiceAllDb.singleFacultyDb(facultyId);
   res.status(200).json({
     success: true,
     message: 'academic faculty is single Data succesfully',
     data: result,
   });
-})
+});
 
-const updateFaculty =catchAsync(async(req ,res)=>{
-  const {facultyId} =req.params ;
-  const result = await facuyltyServiceAllDb.updateFacultyDb(facultyId)
+const updateFaculty = catchAsync(async (req, res) => {
+  const { facultyId } = req.params;
+  const result = await facuyltyServiceAllDb.updateFacultyDb(facultyId);
   res.status(200).json({
     success: true,
     message: 'academic faculty is created succesfully',
     data: result,
   });
-})
+});
 
 export const facultyControllerAll = {
   createFaculty,
   getFaculty,
   singleFacultyId,
-  updateFaculty
+  updateFaculty,
 };

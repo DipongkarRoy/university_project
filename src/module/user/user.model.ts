@@ -1,13 +1,13 @@
 import { Schema, model } from 'mongoose';
 import { Tuser } from './user.interface';
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcrypt';
 import config from '../../app/config';
 const userSchema = new Schema<Tuser>(
   {
     id: {
       type: String,
       required: true,
-      unique:true
+      unique: true,
     },
     password: {
       type: String,
@@ -40,10 +40,7 @@ userSchema.pre('save', async function (next) {
   // eslint-disable-next-line @typescript-eslint/no-this-alias
   const user = this; // doc
   // hashing password and save into DB
-  user.password = await bcrypt.hash(
-    user.password,
-     Number(config.bcrypt)
-  );
+  user.password = await bcrypt.hash(user.password, Number(config.bcrypt));
   next();
 });
 

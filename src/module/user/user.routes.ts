@@ -6,8 +6,6 @@ import validateRequst from '../../app/utiles/validateRequst';
 
 const router = express.Router();
 
-
-
 router.post(
   '/create-user',
   validateRequst(studentValidations.studentValidationSchema),

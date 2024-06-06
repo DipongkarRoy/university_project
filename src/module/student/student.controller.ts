@@ -1,5 +1,3 @@
-
-
 import { StudentServices } from './student.service';
 import catchAsync from '../../app/utiles/catchAsyne';
 

@@ -1,4 +1,3 @@
-
 type TMonth =
   | 'January'
   | 'February'
@@ -21,15 +20,12 @@ export type TAcademicSemester = {
   endMonth: TMonth;
 };
 
-
-
-
-export type TsemesterNameCodeMapper ={
-  [key:string]:string ;
+export type TsemesterNameCodeMapper = {
+  [key: string]: string;
 };
 
-export const semesterMapper:TsemesterNameCodeMapper= {
-  Autumn :'01',
-  Summer:'02',
-  Fall:'03'
-}
+export const semesterMapper: TsemesterNameCodeMapper = {
+  Autumn: '01',
+  Summer: '02',
+  Fall: '03',
+};

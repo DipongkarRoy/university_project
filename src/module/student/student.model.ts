@@ -1,4 +1,4 @@
-import { Schema, model  } from 'mongoose';
+import { Schema, model } from 'mongoose';
 import {
   StudentModel,
   TGuardian,
@@ -136,11 +136,10 @@ const studentSchema = new Schema<TStudent, StudentModel>(
     profileImg: {
       type: String,
     },
-    admissionSemester:{
-      type:Schema.Types.ObjectId ,
-      ref: 'AcademicSemester'
-    }
-
+    admissionSemester: {
+      type: Schema.Types.ObjectId,
+      ref: 'AcademicSemester',
+    },
   },
   {
     toJSON: {

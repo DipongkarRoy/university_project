@@ -12,40 +12,40 @@ const createSemester = catchAsync(async (req, res) => {
 });
 
 const getSemester = catchAsync(async (req, res) => {
-  const result = await semesterDbAll.getSemesterDb()
+  const result = await semesterDbAll.getSemesterDb();
   res.status(200).json({
     success: true,
     message: 'Academic semester all succesfully',
-    data:result 
+    data: result,
   });
 });
 
-const singleSemesterId = catchAsync(async(req ,res)=>{
-  const {semesterId}=req.params
-   //console.log(semesterId);
-  const result = await semesterDbAll.singleSemesterIdDb(semesterId)
+const singleSemesterId = catchAsync(async (req, res) => {
+  const { semesterId } = req.params;
+  //console.log(semesterId);
+  const result = await semesterDbAll.singleSemesterIdDb(semesterId);
   res.status(200).json({
     success: true,
     message: 'Academic semester single Id create succesfully',
-    data:result 
+    data: result,
   });
-})
+});
 
-const updateSemester = catchAsync(async(req ,res)=>{
-  const {semesterId} = req.params;
+const updateSemester = catchAsync(async (req, res) => {
+  const { semesterId } = req.params;
   //console.log(semesterId);
 
-  const result = await semesterDbAll.updateSemesterDb(semesterId ,req.body)
+  const result = await semesterDbAll.updateSemesterDb(semesterId, req.body);
   res.status(200).json({
     success: true,
     message: 'Academic semester single Id create succesfully',
-    data:result 
+    data: result,
   });
-})
+});
 
 export const semesterControllers = {
   createSemester,
   getSemester,
   singleSemesterId,
-  updateSemester
+  updateSemester,
 };
